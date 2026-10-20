@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14161c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ChipSmith">
+  <title>ChipSmith</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>ChipSmith</h1>
+    <input id="project-name" aria-label="Project name" spellcheck="false">
+    <span id="chip-name"></span>
+    <div class="bar-actions">
+      <button id="undo" disabled title="Undo (Ctrl+Z)">Undo</button>
+      <button id="redo" disabled title="Redo (Ctrl+Shift+Z)">Redo</button>
+      <button id="menu-btn" aria-haspopup="true">File</button>
+    </div>
+    <div id="menu" class="menu" hidden>
+      <button data-act="new">New project…</button>
+      <label class="btn">Open project…<input type="file" id="open-file" accept=".json,.chipsmith,application/json" hidden></label>
+      <button data-act="save">Save project</button>
+      <button data-act="export-all">Export everything (ZIP)…</button>
+      <button data-act="chip">Switch chip…</button>
+      <button data-act="help">How it works</button>
+    </div>
+  </header>
+
+  <main id="work">
+    <aside id="side">
+      <details open id="lists">
+        <summary><span class="sum-title">Project</span> <span id="cur-name"></span></summary>
+        <div class="list-head">Music <button class="add" data-add="song" title="New song">+</button></div>
+        <ul id="songs" class="items"></ul>
+        <div class="list-head">Sound effects <button class="add" data-add="sfx" title="New sound effect">+</button></div>
+        <ul id="sfxs" class="items"></ul>
+        <div class="list-head">Instruments <button class="add" data-add="inst" title="New instrument">+</button></div>
+        <ul id="insts" class="items"></ul>
+      </details>
+    </aside>
+    <section id="pane"></section>
+  </main>
+
+  <dialog id="dlg"><form method="dialog" id="dlg-form"></form></dialog>
+  <div id="toast" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
